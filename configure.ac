@@ -91,7 +91,7 @@ if test "x$enable_asm" = xyes; then
             ;;
         esac
         ;;
-    armv7l)
+    armv7*l)
         asm_arch=armv7l
         ;;
     aarch64)

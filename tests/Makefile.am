@@ -56,7 +56,9 @@ AM_CFLAGS =                                  \
 	-I$(top_srcdir)/src/util/glvnd_pthread
 
 
+if ! GLDISPATCH_TYPE_PURE_C
 TESTS += testpatchentrypoints_gldispatch.sh
+endif
 check_PROGRAMS += testpatchentrypoints_gldispatch
 testpatchentrypoints_gldispatch_SOURCES = \
 	testpatchentrypoints_gldispatch.c
@@ -74,6 +76,7 @@ testpatchentrypoints_gldispatch_LDADD += $(top_builddir)/src/util/libutils_misc.
 # the scripts would be missing when you run "make dist" or "make distcheck".
 
 TESTS_GLX =
+if ! GLDISPATCH_TYPE_PURE_C
 TESTS_GLX += testglxmcbasic.sh
 TESTS_GLX += testglxmcloop.sh
 TESTS_GLX += testglxmcthreads.sh
@@ -81,9 +84,12 @@ TESTS_GLX += testglxmclate.sh
 TESTS_GLX += testglxmcoldlink.sh
 TESTS_GLX += testglxgetprocaddress.sh
 TESTS_GLX += testglxgetprocaddress_genentry.sh
+endif
 TESTS_GLX += testglxgetclientstr.sh
 TESTS_GLX += testglxqueryversion.sh
+if ! GLDISPATCH_TYPE_PURE_C
 TESTS_GLX += testpatchentrypoints.sh
+endif
 
 if ENABLE_GLX
 
